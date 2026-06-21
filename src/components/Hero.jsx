@@ -60,9 +60,8 @@ const Hero = () => {
             className="mt-6 max-w-2xl text-base sm:text-lg md:text-xl font-normal leading-relaxed text-balance"
             style={{ fontFamily: TITLE_FONT, fontWeight: 400, color: PALETTE, opacity: 0.92, textShadow: '0 2px 16px rgba(0,0,0,0.5)' }}
           >
-            Psicoterapia para mulheres neurodivergentes que desejam desenvolver
-            regulação emocional, fortalecer a autoestima e construir
-            relacionamentos mais saudáveis.
+            Um espaço seguro para compreender seu funcionamento e construir uma
+            relação mais gentil consigo mesma.
           </motion.p>
 
           <motion.button
