@@ -96,3 +96,22 @@
   background-size: cover;
   background-position: 50% 50%;
 }
+
+@media (max-width: 768px) {
+  .menu__item-link {
+    font-size: 4.5vw;
+    padding: 0 1rem;
+    white-space: normal;
+    line-height: 1.2;
+  }
+
+  .marquee span {
+    font-size: 4.5vw;
+  }
+
+  .marquee__img {
+    width: 90px;
+    height: 5vh;
+    margin: 1em 3vw;
+  }
+}
