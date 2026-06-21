@@ -35,31 +35,30 @@ const HowICanHelp = () => {
   const [ref, isInView] = useInView({ threshold: 0.1 });
 
   return (
-    <section id="how-i-can-help" ref={ref} className="py-20 px-4 bg-background">
-      <div className="container mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Como posso te ajudar
-          </h2>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
-        </motion.div>
+    <section id="how-i-can-help" ref={ref} className="py-20 bg-background">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-12 px-4"
+      >
+        <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          Como posso te ajudar
+        </h2>
+        <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
+      </motion.div>
 
-        <div className="h-[520px] md:h-[600px] rounded-2xl overflow-hidden shadow-lg max-w-6xl mx-auto">
-          <FlowingMenu
-            items={items}
-            speed={18}
-            bgColor="#2b363b"
-            textColor="#F0EDE4"
-            marqueeBgColor="#F0EDE4"
-            marqueeTextColor="#1b2127"
-            borderColor="rgba(240,237,228,0.25)"
-          />
-        </div>
+      <div className="h-[520px] md:h-[600px] w-full overflow-hidden">
+        <FlowingMenu
+          items={items}
+          speed={18}
+          autoplay
+          bgColor="#2b363b"
+          textColor="#F0EDE4"
+          marqueeBgColor="#F0EDE4"
+          marqueeTextColor="#1b2127"
+          borderColor="rgba(240,237,228,0.25)"
+        />
       </div>
     </section>
   );

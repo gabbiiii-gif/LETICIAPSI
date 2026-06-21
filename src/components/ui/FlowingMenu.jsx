@@ -6,6 +6,7 @@ import './FlowingMenu.css';
 function FlowingMenu({
   items = [],
   speed = 15,
+  autoplay = false,
   textColor = '#fff',
   bgColor = '#120F17',
   marqueeBgColor = '#fff',
@@ -20,6 +21,7 @@ function FlowingMenu({
             key={idx}
             {...item}
             speed={speed}
+            autoplay={autoplay}
             textColor={textColor}
             marqueeBgColor={marqueeBgColor}
             marqueeTextColor={marqueeTextColor}
@@ -31,7 +33,7 @@ function FlowingMenu({
   );
 }
 
-function MenuItem({ link, text, image, speed, textColor, marqueeBgColor, marqueeTextColor, borderColor }) {
+function MenuItem({ link, text, image, speed, autoplay, textColor, marqueeBgColor, marqueeTextColor, borderColor }) {
   const itemRef = useRef(null);
   const marqueeRef = useRef(null);
   const marqueeInnerRef = useRef(null);
@@ -109,6 +111,7 @@ function MenuItem({ link, text, image, speed, textColor, marqueeBgColor, marquee
   }, [text, image, repetitions, speed]);
 
   const handleMouseEnter = ev => {
+    if (autoplay) return;
     if (!itemRef.current || !marqueeRef.current || !marqueeInnerRef.current) return;
     const rect = itemRef.current.getBoundingClientRect();
     const x = ev.clientX - rect.left;
@@ -123,6 +126,7 @@ function MenuItem({ link, text, image, speed, textColor, marqueeBgColor, marquee
   };
 
   const handleMouseLeave = ev => {
+    if (autoplay) return;
     if (!itemRef.current || !marqueeRef.current || !marqueeInnerRef.current) return;
     const rect = itemRef.current.getBoundingClientRect();
     const x = ev.clientX - rect.left;
@@ -136,7 +140,7 @@ function MenuItem({ link, text, image, speed, textColor, marqueeBgColor, marquee
   };
 
   return (
-    <div className="menu__item" ref={itemRef} style={{ borderColor }}>
+    <div className={`menu__item${autoplay ? ' menu__item--autoplay' : ''}`} ref={itemRef} style={{ borderColor }}>
       <a
         className="menu__item-link"
         href={link}
