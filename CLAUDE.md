@@ -43,8 +43,5 @@ No test runner is configured. There is no single-test command.
 
 ## Known cruft / things that don't work
 
-- **`src/pages/HomePage.jsx`** — empty stub, not routed. Dead. (`pages/Home.jsx` is the real home.)
-- **`src/components/ScrollToTop.jsx`** — not imported; `App.jsx` defines its own inline `ScrollToTop`. Duplicate/dead.
-- **`src/components/WelcomeMessage.jsx`** — leftover Horizons template ("I'm Horizons, your AI coding companion"). Not imported. Delete if cleaning up.
 - **`src/hooks/use-toast.js` vs `src/components/ui/use-toast.js`** — two toast hook copies exist (shadcn duplication). Confirm which one a component imports before editing.
 - Build script swallows failures: `node tools/generate-llms.js || true` — llms.txt generation can silently fail without breaking the build.
