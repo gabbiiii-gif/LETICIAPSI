@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import LightRays from '@/components/ui/LightRays';
 
 const PALETTE = '#F0EDE4';
 const TITLE_FONT = "'Tai Heritage Pro', serif";
@@ -16,6 +15,10 @@ const Hero = () => {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
   const opacity = useTransform(scrollYProgress, [0, 0.6, 1], [1, 1, 0]);
 
+  // Saída suave do texto ao rolar
+  const textY = useTransform(scrollYProgress, [0, 0.6], [0, -40]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
+
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -26,35 +29,26 @@ const Hero = () => {
         style={{ scale, opacity }}
         className="h-full w-full sticky top-0 overflow-hidden"
       >
-        {/* Backdrop */}
-        <div className="absolute inset-0 bg-[#788990]" />
+        {/* Imagem de fundo, levemente desfocada */}
+        <div
+          className="absolute inset-0 bg-cover bg-center scale-105 blur-[3px]"
+          style={{ backgroundImage: 'url(/hero.jpg)' }}
+        />
 
-        {/* Light rays */}
-        <div className="absolute inset-0">
-          <LightRays
-            raysOrigin="top-center"
-            raysColor="#e7d5d5"
-            raysSpeed={1}
-            lightSpread={1}
-            rayLength={2}
-            pulsating={false}
-            fadeDistance={1}
-            saturation={1}
-            followMouse
-            mouseInfluence={0.1}
-            noiseAmount={0}
-            distortion={0}
-          />
-        </div>
+        {/* Overlay para legibilidade do texto */}
+        <div className="absolute inset-0 bg-black/35" />
 
         {/* Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+        <motion.div
+          style={{ y: textY, opacity: textOpacity }}
+          className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center"
+        >
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.9, ease: 'easeOut' }}
+            transition={{ delay: 0.3, duration: 1, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-4xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-tight text-balance"
-            style={{ fontFamily: TITLE_FONT, fontWeight: 400, color: PALETTE, textShadow: '0 4px 24px rgba(0,0,0,0.45)' }}
+            style={{ fontFamily: TITLE_FONT, fontWeight: 400, color: PALETTE, textShadow: '0 4px 24px rgba(0,0,0,0.55)' }}
           >
             Compreender a si mesma muda a forma como você vive.
           </motion.h1>
@@ -62,9 +56,9 @@ const Hero = () => {
           <motion.p
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.55, duration: 0.9, ease: 'easeOut' }}
+            transition={{ delay: 0.55, duration: 1, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6 max-w-2xl text-base sm:text-lg md:text-xl font-normal leading-relaxed text-balance"
-            style={{ fontFamily: TITLE_FONT, fontWeight: 400, color: PALETTE, opacity: 0.92 }}
+            style={{ fontFamily: TITLE_FONT, fontWeight: 400, color: PALETTE, opacity: 0.92, textShadow: '0 2px 16px rgba(0,0,0,0.5)' }}
           >
             Psicoterapia para mulheres neurodivergentes que desejam desenvolver
             regulação emocional, fortalecer a autoestima e construir
@@ -75,15 +69,15 @@ const Hero = () => {
             onClick={scrollToContact}
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8, ease: 'easeOut' }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            className="mt-10 rounded-full px-10 py-4 text-base sm:text-lg font-normal tracking-wide text-[#1b2127] shadow-[0_8px_40px_rgba(240,237,228,0.45)] transition-shadow hover:shadow-[0_10px_60px_rgba(240,237,228,0.7)]"
-            style={{ backgroundColor: PALETTE, fontFamily: TITLE_FONT, fontWeight: 400 }}
+            transition={{ delay: 0.8, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            className="mt-10 rounded-full border border-white/40 bg-white/10 px-9 py-3.5 text-base sm:text-lg font-normal tracking-wide backdrop-blur-sm transition-colors hover:bg-white/20"
+            style={{ color: PALETTE, fontFamily: TITLE_FONT, fontWeight: 400 }}
           >
             Agende sua sessão
           </motion.button>
-        </div>
+        </motion.div>
       </motion.div>
     </div>
   );
