@@ -1,23 +1,15 @@
 import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useInView';
-import { Heart, Brain, Users } from 'lucide-react';
+import Lanyard from '@/components/ui/Lanyard';
 const About = () => {
   const [ref, isInView] = useInView({
     threshold: 0.3
   });
-  const targetRef = React.useRef(null);
-  const {
-    scrollYProgress
-  } = useScroll({
-    target: targetRef,
-    offset: ['start end', 'end start']
-  });
-  const imageY = useTransform(scrollYProgress, [0, 1], ['-20%', '20%']);
   return <section id="about" ref={ref} className="relative py-24 md:py-32 px-4 overflow-hidden">
         <div className="container mx-auto relative z-10">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <motion.div ref={targetRef} initial={{
+                <motion.div initial={{
           opacity: 0,
           scale: 0.9
         }} animate={isInView ? {
@@ -26,12 +18,13 @@ const About = () => {
         } : {}} transition={{
           duration: 0.8,
           delay: 0.2
-        }} className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
-                    <motion.div style={{
-            y: imageY
-          }} className="absolute -inset-16">
-                        <img src="https://horizons-cdn.hostinger.com/977e6718-02dc-4011-a467-14a30122a99c/v9a9xckn_img_0216-ysJYS.jpg" alt="Psicóloga Letícia Pais em seu consultório" className="w-full h-full object-cover" />
-                    </motion.div>
+        }} className="relative h-[560px] md:h-[640px]">
+                    <Lanyard
+                      position={[0, 0, 18]}
+                      gravity={[0, -40, 0]}
+                      frontImage="/leticia.jpg"
+                      imageFit="cover"
+                    />
                 </motion.div>
 
                 <motion.div initial={{
