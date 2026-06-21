@@ -26,14 +26,14 @@ const Hero = () => {
         style={{ scale, opacity }}
         className="h-full w-full sticky top-0 overflow-hidden"
       >
-        {/* Dark backdrop so the light rays read clearly */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1b2127] via-[#222a31] to-[#2c353d]" />
+        {/* Backdrop */}
+        <div className="absolute inset-0 bg-[#788990]" />
 
         {/* Light rays */}
         <div className="absolute inset-0">
           <LightRays
             raysOrigin="top-center"
-            raysColor="#fffafa"
+            raysColor="#e7d5d5"
             raysSpeed={1}
             lightSpread={1}
             rayLength={2}
