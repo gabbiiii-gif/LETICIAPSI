@@ -72,7 +72,7 @@ const Header = () => {
     >
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" onClick={(e) => handleNavClick(e, '/#hero')} className="text-xl font-semibold text-foreground hover:text-primary transition-colors tracking-wider">
+          <Link to="/" onClick={(e) => handleNavClick(e, '/#hero')} className={`text-xl font-semibold hover:text-primary transition-colors tracking-wider ${isScrolled ? 'text-foreground' : 'text-white'}`}>
             LETÍCIA PAIS
           </Link>
 
@@ -82,7 +82,7 @@ const Header = () => {
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className="text-foreground hover:text-primary font-medium transition-colors"
+                className={`hover:text-primary font-medium transition-colors ${isScrolled ? 'text-foreground' : 'text-white'}`}
               >
                 {item.label}
               </a>
@@ -90,12 +90,12 @@ const Header = () => {
           </div>
 
           <div className="flex items-center gap-2 sm:gap-4">
-            <Button onClick={handleContactClick} variant="outline" className="hidden md:inline-flex border-border bg-transparent hover:bg-accent text-foreground">
+            <Button onClick={handleContactClick} variant="outline" className={`hidden md:inline-flex bg-transparent ${isScrolled ? 'border-border hover:bg-accent text-foreground' : 'border-white/60 text-white hover:bg-white/10'}`}>
               Agendar consulta
             </Button>
             <ThemeToggle />
             <button
-              className="md:hidden text-foreground"
+              className={`md:hidden ${isScrolled ? 'text-foreground' : 'text-white'}`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >

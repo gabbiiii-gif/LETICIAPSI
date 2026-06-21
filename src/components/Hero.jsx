@@ -31,7 +31,7 @@ const Hero = () => {
       >
         {/* Imagem de fundo, levemente desfocada */}
         <div
-          className="absolute inset-0 bg-cover bg-center scale-105 blur-[3px]"
+          className="absolute inset-0 bg-cover bg-center scale-105 blur-[1.5px]"
           style={{ backgroundImage: 'url(/hero.jpg)' }}
         />
 
