@@ -43,5 +43,4 @@ No test runner is configured. There is no single-test command.
 
 ## Known cruft / things that don't work
 
-- **`src/hooks/use-toast.js` vs `src/components/ui/use-toast.js`** — two toast hook copies exist (shadcn duplication). Confirm which one a component imports before editing.
 - Build script swallows failures: `node tools/generate-llms.js || true` — llms.txt generation can silently fail without breaking the build.
