@@ -1,4 +1,5 @@
 import React from 'react';
+import SectionHeading from '@/components/SectionHeading';
 import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useInView';
 
@@ -46,21 +47,12 @@ const HowICanHelp = () => {
       />
 
       <div className="relative mx-auto max-w-[1120px]">
-        <motion.div {...reveal()}>
-          <div
-            className="mb-4 flex items-center gap-3 text-[10px] uppercase"
-            style={{ fontFamily: BODY_FONT, fontWeight: 500, letterSpacing: '0.35em', color: CREAM }}
-          >
-            <span className="h-px w-[28px] shrink-0 bg-primary" />
-            Como posso te ajudar
-          </div>
-          <h2
-            className="max-w-[20ch] text-[clamp(2rem,4vw,3.25rem)] leading-[1.15]"
-            style={{ fontFamily: TITLE_FONT, fontWeight: 400, color: CREAM }}
-          >
-            Nem sempre o que você sente cabe em uma palavra.
-          </h2>
-        </motion.div>
+        <SectionHeading
+          align="left"
+          tone="dark"
+          eyebrow="Como posso te ajudar"
+          title="Nem sempre o que você sente cabe em uma palavra."
+        />
 
         <div
           className={`mt-14 grid items-start gap-12 ${PHOTO ? 'md:grid-cols-2 md:gap-20' : ''}`}

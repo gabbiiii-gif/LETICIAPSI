@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import SectionHeading from '@/components/SectionHeading';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from '@/hooks/useInView';
 import { Button } from '@/components/ui/button';
@@ -41,21 +42,31 @@ const BlogSection = () => {
   };
 
   return (
-    <section id="blog" ref={ref} className="py-20 px-4 bg-background">
-      <div className="container mx-auto">
+    <section
+      id="blog"
+      ref={ref}
+      className="relative overflow-hidden py-20 px-4"
+      style={{ backgroundColor: '#2b363b' }}
+    >
+      {/* Mesmo brilho suave da secao "Como posso te ajudar" */}
+      <div
+        className="pointer-events-none absolute -right-[15%] -top-[30%] h-[500px] w-[500px] rounded-full"
+        style={{ background: 'radial-gradient(circle, rgba(155,168,182,0.18) 0%, transparent 70%)' }}
+      />
+
+      <div className="container mx-auto relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Meu Blog
-          </h2>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
-          <p className="text-lg text-muted-foreground mt-6 max-w-2xl mx-auto">
-            Reflexões e artigos sobre psicologia, bem-estar e o universo da Terapia Cognitivo-Comportamental.
-          </p>
+          <SectionHeading
+            tone="dark"
+            eyebrow="Meu blog"
+            title="Psicologia em palavras simples."
+            description="Reflexões e artigos sobre psicologia, bem-estar e o universo da Terapia Cognitivo-Comportamental."
+          />
         </motion.div>
 
         <motion.div 

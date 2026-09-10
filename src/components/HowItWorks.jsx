@@ -1,4 +1,5 @@
 import React from 'react';
+import SectionHeading from '@/components/SectionHeading';
 import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useInView';
 
@@ -73,32 +74,12 @@ const HowItWorks = () => {
       className="bg-background px-6 py-20 sm:px-10 md:px-16 md:py-[110px]"
     >
       <div className="mx-auto max-w-[1120px]">
-        <motion.div
-          initial={{ opacity: 0, y: 22 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mb-14 max-w-[640px] text-center md:mb-20"
-        >
-          <div
-            className="mb-4 text-[10px] uppercase text-primary"
-            style={{ fontFamily: BODY_FONT, fontWeight: 500, letterSpacing: '0.35em' }}
-          >
-            Como funciona
-          </div>
-          <h2
-            className="mb-5 text-[clamp(2rem,4vw,3.25rem)] leading-[1.15] text-foreground"
-            style={{ fontFamily: TITLE_FONT, fontWeight: 400 }}
-          >
-            Um processo personalizado, construído com você
-          </h2>
-          <p
-            className="text-[15.5px] leading-[1.9] text-muted-foreground"
-            style={{ fontFamily: BODY_FONT, fontWeight: 300 }}
-          >
-            Não existe roteiro pronto. Cada acompanhamento é único, adaptado ao
-            seu momento e aos seus objetivos.
-          </p>
-        </motion.div>
+        <SectionHeading
+          className="mb-14 md:mb-20"
+          eyebrow="Como funciona"
+          title="Um processo personalizado, construído com você"
+          description="Não existe roteiro pronto. Cada acompanhamento é único, adaptado ao seu momento e aos seus objetivos."
+        />
 
         <div className="grid items-start gap-10 md:grid-cols-2 md:gap-16">
           <motion.div

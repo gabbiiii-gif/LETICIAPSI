@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SectionHeading from '@/components/SectionHeading';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from '@/hooks/useInView';
 import { Plus, Minus } from 'lucide-react';
@@ -47,10 +48,10 @@ const FAQ = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Perguntas Frequentes
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-blue-400 mx-auto rounded-full" />
+          <SectionHeading
+            eyebrow="Perguntas frequentes"
+            title="Perguntar também faz parte."
+          />
         </motion.div>
 
         <div className="space-y-4">

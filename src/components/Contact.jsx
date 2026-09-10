@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SectionHeading from '@/components/SectionHeading';
 import { motion } from 'framer-motion';
 import { useInView } from '@/hooks/useInView';
 import { Button } from '@/components/ui/button';
@@ -39,8 +40,8 @@ const Contact = () => {
   }, {
     icon: MapPin,
     label: 'Endereço',
-    value: 'Djalma Dutra, Centro - Altamira/PA',
-    link: null
+    value: 'R. Intendente Floriano, 2507 - Sudam I, Altamira/PA, 68371-486',
+    link: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('R. Intendente Floriano, 2507 - Sudam I, Altamira - PA, 68371-486')
   }];
   const validateForm = () => {
     const newErrors = {};
@@ -102,13 +103,11 @@ const Contact = () => {
       } : {}} transition={{
         duration: 0.6
       }} className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Entre em Contato
-          </h2>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
-          <p className="text-lg text-muted-foreground mt-6 max-w-2xl mx-auto">
-            Estou aqui para ajudar você. Entre em contato para agendar sua consulta ou tirar dúvidas.
-          </p>
+          <SectionHeading
+            eyebrow="Entre em contato"
+            title="O primeiro passo pode ser uma mensagem."
+            description="Estou aqui para ajudar você. Entre em contato para agendar sua consulta ou tirar dúvidas."
+          />
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto [&>*]:min-w-0">

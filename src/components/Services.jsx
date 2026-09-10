@@ -1,4 +1,5 @@
 import React, { useLayoutEffect, useRef } from 'react';
+import SectionHeading from '@/components/SectionHeading';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -23,7 +24,7 @@ const services = [
   {
     icon: MapPin,
     title: 'Atendimento Presencial',
-    description: 'Djalma Dutra, Centro (próximo à Nissei), Altamira - PA.',
+    description: 'R. Intendente Floriano, 2507 - Sudam I, Altamira - PA.',
     details: 'Ambiente seguro e acolhedor',
   },
   {
@@ -153,13 +154,11 @@ const Services = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Modalidades de Atendimento
-          </h2>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
-          <p className="text-lg text-muted-foreground mt-6 max-w-2xl mx-auto">
-            Soluções personalizadas para o seu bem-estar, onde quer que você esteja.
-          </p>
+          <SectionHeading
+            eyebrow="Modalidades de atendimento"
+            title="Presencial em Altamira ou online, onde você estiver."
+            description="Soluções personalizadas para o seu bem-estar, onde quer que você esteja."
+          />
         </motion.div>
 
         <div ref={wrapRef} className="relative mx-auto max-w-4xl">
