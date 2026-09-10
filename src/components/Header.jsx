@@ -23,6 +23,10 @@ const Header = () => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
+  // O tratamento transparente/branco so faz sentido sobre o hero escuro da home.
+  // Em /blog o fundo e claro, entao o header precisa do estilo solido desde o topo.
+  const hasSolidBg = isScrolled || location.pathname !== '/';
+
   const navItems = [
     { label: 'Início', href: '/#hero' },
     { label: 'Sobre', href: '/#about' },
@@ -67,12 +71,29 @@ const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background shadow-sm border-b border-border/50' : 'bg-transparent'
+        hasSolidBg ? 'bg-background shadow-sm border-b border-border/50' : 'bg-transparent'
       }`}
     >
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" onClick={(e) => handleNavClick(e, '/#hero')} className={`text-xl font-semibold hover:text-primary transition-colors tracking-wider ${isScrolled ? 'text-foreground' : 'text-white'}`}>
+          <Link to="/" onClick={(e) => handleNavClick(e, '/#hero')} className={`flex items-center gap-2.5 text-xl font-semibold hover:text-primary transition-colors tracking-wider ${hasSolidBg ? 'text-foreground' : 'text-white'}`}>
+            {/* A logo e desenhada como mascara, entao assume a cor do texto:
+                branca sobre o hero, preta quando o header ganha fundo claro. */}
+            <span
+              aria-hidden="true"
+              className="block h-7 shrink-0 bg-current sm:h-9"
+              style={{
+                aspectRatio: '126.2 / 99.4',
+                WebkitMaskImage: 'url(/logo.svg)',
+                maskImage: 'url(/logo.svg)',
+                WebkitMaskRepeat: 'no-repeat',
+                maskRepeat: 'no-repeat',
+                WebkitMaskPosition: 'center',
+                maskPosition: 'center',
+                WebkitMaskSize: 'contain',
+                maskSize: 'contain',
+              }}
+            />
             LETÍCIA PAIS
           </Link>
 
@@ -82,7 +103,7 @@ const Header = () => {
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={`hover:text-primary font-medium transition-colors ${isScrolled ? 'text-foreground' : 'text-white'}`}
+                className={`hover:text-primary font-medium transition-colors ${hasSolidBg ? 'text-foreground' : 'text-white'}`}
               >
                 {item.label}
               </a>
@@ -90,12 +111,12 @@ const Header = () => {
           </div>
 
           <div className="flex items-center gap-2 sm:gap-4">
-            <Button onClick={handleContactClick} variant="outline" className={`hidden md:inline-flex bg-transparent ${isScrolled ? 'border-border hover:bg-accent text-foreground' : 'border-white/60 text-white hover:bg-white/10'}`}>
+            <Button onClick={handleContactClick} variant="outline" className={`hidden md:inline-flex bg-transparent ${hasSolidBg ? 'border-border hover:bg-accent text-foreground' : 'border-white/60 text-white hover:bg-white/10'}`}>
               Agendar consulta
             </Button>
             <ThemeToggle />
             <button
-              className={`md:hidden ${isScrolled ? 'text-foreground' : 'text-white'}`}
+              className={`md:hidden ${hasSolidBg ? 'text-foreground' : 'text-white'}`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
