@@ -72,9 +72,10 @@ const IntroOverlay = () => {
           className="fixed inset-0 z-[100] flex items-center justify-center"
           style={{ backgroundColor: FUNDO }}
         >
+          {/* webm primeiro (metade do peso); mp4 atende iOS antigo, que so
+              ganhou suporte a webm no Safari 15.4 */}
           <video
             ref={videoRef}
-            src="/intro-logo.mp4"
             muted
             autoPlay
             playsInline
@@ -82,7 +83,10 @@ const IntroOverlay = () => {
             onEnded={fechar}
             onError={fechar}
             className="h-full w-full object-contain"
-          />
+          >
+            <source src="/intro-logo.webm" type="video/webm" />
+            <source src="/intro-logo.mp4" type="video/mp4" />
+          </video>
 
           <button
             type="button"
