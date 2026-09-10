@@ -74,50 +74,77 @@ const paragrafos = [
 const About = () => {
   const [ref, isInView] = useInView({ threshold: 0.1 });
 
+  const Paragrafo = ({ children, i }) => (
+    <motion.p
+      initial={{ opacity: 0, y: 16 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: 0.15 + i * 0.04 }}
+      className="text-[15px] leading-[1.9] text-muted-foreground sm:text-base"
+      style={{ fontFamily: BODY_FONT, fontWeight: 300 }}
+    >
+      {children}
+    </motion.p>
+  );
+
+  const Foto = ({ src, alt, ratio, posicao, delay, preenche = false }) => (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.96 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+      transition={{ duration: 0.8, delay }}
+      className={`mx-auto w-full max-w-[420px] lg:max-w-none ${preenche ? 'lg:h-full' : 'lg:self-start'}`}
+    >
+      <div className={`${ratio} overflow-hidden rounded-2xl shadow-2xl ${preenche ? 'lg:aspect-auto lg:h-full' : ''}`}>
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          className="h-full w-full object-cover"
+          style={{ objectPosition: posicao }}
+        />
+      </div>
+    </motion.div>
+  );
+
   return (
     <section id="about" ref={ref} className="relative overflow-hidden px-6 py-24 sm:px-10 md:px-16 md:py-32">
-      <div className="mx-auto max-w-[1120px]">
-        {/* Texto longo: a foto acompanha a leitura em vez de ficar solta no topo */}
-        <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1fr)] lg:gap-16">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="mx-auto w-full max-w-[420px] lg:sticky lg:top-28 lg:max-w-none"
-          >
-            <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl">
-              <img
-                src="/sobre-mim.webp"
-                alt="Psicóloga Letícia Pais em seu consultório"
-                className="h-full w-full object-cover"
-                style={{ objectPosition: 'center 22%' }}
-              />
-            </div>
-          </motion.div>
+      {/* Duas fotos alternando os lados: retrato em cima a esquerda,
+          consultorio embaixo a direita, com o texto correndo entre elas. */}
+      <div className="mx-auto grid max-w-[1120px] gap-10 lg:grid-cols-2 lg:gap-16">
+        <Foto
+          src="/sobre-mim.webp"
+          alt="Psicóloga Letícia Pais em seu consultório"
+          ratio="aspect-[4/5]"
+          posicao="center 22%"
+          delay={0.1}
+          preenche
+        />
 
-          <div>
-            <SectionHeading
-              align="left"
-              eyebrow="Sobre mim"
-              title="Acompanhar mulheres em processos de compreensão e mudança."
-            />
-
-            <div className="mt-8 space-y-5">
-              {paragrafos.map((texto, i) => (
-                <motion.p
-                  key={i}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.15 + i * 0.05 }}
-                  className="text-[15px] leading-[1.9] text-muted-foreground sm:text-base"
-                  style={{ fontFamily: BODY_FONT, fontWeight: 300 }}
-                >
-                  {texto}
-                </motion.p>
-              ))}
-            </div>
+        <div>
+          <SectionHeading
+            align="left"
+            eyebrow="Sobre mim"
+            title="Acompanhar mulheres em processos de compreensão e mudança."
+          />
+          <div className="mt-8 space-y-5">
+            {paragrafos.slice(0, 4).map((texto, i) => (
+              <Paragrafo key={i} i={i}>{texto}</Paragrafo>
+            ))}
           </div>
         </div>
+
+        <div className="space-y-5 lg:pt-2">
+          {paragrafos.slice(4).map((texto, i) => (
+            <Paragrafo key={i} i={i + 4}>{texto}</Paragrafo>
+          ))}
+        </div>
+
+        <Foto
+          src="/sobre-mim-2.webp"
+          alt="Poltrona do consultório de Letícia Pais, vista de quem atende"
+          ratio="aspect-[3/4]"
+          posicao="center"
+          delay={0.2}
+        />
       </div>
     </section>
   );
