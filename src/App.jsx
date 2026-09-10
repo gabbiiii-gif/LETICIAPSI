@@ -4,6 +4,7 @@ import Home from '@/pages/Home';
 import Blog from '@/pages/Blog';
 import BlogPost from '@/pages/BlogPost';
 import { Toaster } from '@/components/ui/toaster';
+import IntroOverlay from '@/components/IntroOverlay';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { useEffect } from 'react';
 
@@ -20,6 +21,7 @@ const ScrollToTop = () => {
 function App() {
   return (
     <ThemeProvider>
+      <IntroOverlay />
       <Router>
         <ScrollToTop />
         <Routes>
