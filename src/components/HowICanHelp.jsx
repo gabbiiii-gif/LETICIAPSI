@@ -7,9 +7,8 @@ const TITLE_FONT = "'Tai Heritage Pro', serif";
 const BODY_FONT = "'Montserrat', sans-serif";
 const WHATSAPP = 'https://wa.me/5593991710671';
 
-// Coloque aqui o caminho de uma foto em public/ (ex.: '/leticia-consultorio.jpg')
-// para exibir a coluna da direita. Com null, a lista ocupa a largura toda.
-const PHOTO = null;
+// Foto da coluna da direita. Com null, a lista ocupa a largura toda.
+const PHOTO = '/como-posso-ajudar.webp';
 
 const demandas = [
   'Ansiedade e regulação emocional',
@@ -109,9 +108,10 @@ const HowICanHelp = () => {
             >
               <img
                 src={PHOTO}
-                alt="Letícia Pais, psicóloga"
+                alt="Livro aberto com uma caneta sobre o assento de uma poltrona"
+                loading="lazy"
                 className="h-full w-full object-cover"
-                style={{ objectPosition: 'center 40%', filter: 'brightness(0.9)' }}
+                style={{ filter: 'brightness(0.95)' }}
               />
             </motion.div>
           )}
