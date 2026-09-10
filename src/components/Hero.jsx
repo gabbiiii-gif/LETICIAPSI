@@ -22,7 +22,7 @@ const Hero = () => {
       {/* Foto de fundo, nítida */}
       <div
         className="absolute inset-0 bg-cover bg-no-repeat"
-        style={{ backgroundImage: 'url(/hero.jpg)', backgroundPosition: 'center 30%' }}
+        style={{ backgroundImage: 'url(/hero.webp)', backgroundPosition: 'center 30%' }}
       />
 
       {/* Gradiente de baixo para cima, para leitura do texto */}

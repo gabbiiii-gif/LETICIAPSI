@@ -109,7 +109,7 @@ const HowItWorks = () => {
           >
             <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-xl md:aspect-[3/4]">
               <img
-                src="/como-funciona.jpeg"
+                src="/como-funciona.webp"
                 alt="Letícia Pais durante um atendimento"
                 loading="lazy"
                 className="h-full w-full object-cover"
