@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
-import HowICanHelp from '@/components/HowICanHelp';
 import Services from '@/components/Services';
 import BlogSection from '@/components/BlogSection';
 import FAQ from '@/components/FAQ';
@@ -31,7 +30,6 @@ function Home() {
           <Hero />
           <div className="relative z-10 bg-background">
             <About />
-            <HowICanHelp />
             <Services />
             <BlogSection />
             <FAQ />
