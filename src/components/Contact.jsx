@@ -111,7 +111,7 @@ const Contact = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto [&>*]:min-w-0">
           <motion.div initial={{
           opacity: 0,
           x: -30
@@ -195,7 +195,7 @@ const Contact = () => {
 
               <div className="space-y-2">
                 <Label htmlFor="message" className="text-muted-foreground">Mensagem *</Label>
-                <Textarea id="message" name="message" value={formData.message} onChange={handleChange} placeholder="Como posso ajudar você?" rows={5} className={errors.message ? 'border-destructive' : ''} />
+                <Textarea id="message" name="message" value={formData.message} onChange={handleChange} placeholder="Como posso ajudar você?" rows={5} className={`min-w-0 ${errors.message ? 'border-destructive' : ''}`} />
                 {errors.message && <p className="text-sm text-destructive">{errors.message}</p>}
               </div>
 

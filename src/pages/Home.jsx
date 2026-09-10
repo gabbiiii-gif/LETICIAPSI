@@ -3,6 +3,8 @@ import { Helmet } from 'react-helmet';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
+import HowICanHelp from '@/components/HowICanHelp';
+import HowItWorks from '@/components/HowItWorks';
 import Services from '@/components/Services';
 import BlogSection from '@/components/BlogSection';
 import FAQ from '@/components/FAQ';
@@ -21,7 +23,7 @@ function Home() {
         <meta property="og:type" content="website" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600;700&family=Tai+Heritage+Pro:wght@400;700&display=swap" rel="stylesheet" />
       </Helmet>
       
       <div className="bg-background">
@@ -30,6 +32,8 @@ function Home() {
           <Hero />
           <div className="relative z-10 bg-background">
             <About />
+            <HowICanHelp />
+            <HowItWorks />
             <Services />
             <BlogSection />
             <FAQ />

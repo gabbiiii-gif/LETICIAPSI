@@ -63,6 +63,8 @@ const BlogSection = () => {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
+          {/* Clipa os slides que entram/saem para não gerar scroll horizontal */}
+          <div className="absolute inset-0 overflow-hidden">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={page}
@@ -93,6 +95,7 @@ const BlogSection = () => {
               </div>
             </motion.div>
           </AnimatePresence>
+          </div>
 
           <div className="absolute bottom-[-30px] left-1/2 -translate-x-1/2 z-10 flex gap-2">
             {blogPosts.map((_, i) => (
