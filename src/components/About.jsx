@@ -30,7 +30,7 @@ const About = () => {
                     <motion.div style={{
             y: imageY
           }} className="absolute -inset-16">
-                        <img src="https://horizons-cdn.hostinger.com/977e6718-02dc-4011-a467-14a30122a99c/v9a9xckn_img_0216-ysJYS.jpg" alt="Psicóloga Letícia Pais em seu consultório" className="w-full h-full object-cover" />
+                        <img src="/sobre-mim.jpeg" alt="Psicóloga Letícia Pais em seu consultório" className="w-full h-full object-cover" style={{ objectPosition: 'center 22%' }} />
                     </motion.div>
                 </motion.div>
 

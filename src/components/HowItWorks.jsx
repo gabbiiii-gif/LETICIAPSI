@@ -29,35 +29,36 @@ const steps = [
 ];
 
 const Step = ({ n, title, desc, delay }) => {
-  const [ref, isInView] = useInView({ threshold: 0.2 });
+  const [ref, isInView] = useInView({ threshold: 0.3 });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 22 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative bg-card px-7 py-10 transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(43,54,59,0.08)] sm:px-8"
+      className="group flex gap-5 border-b border-border py-7 last:border-b-0 sm:gap-7"
     >
       <span
-        className="mb-5 block text-[48px] leading-none text-primary"
+        className="shrink-0 text-[38px] leading-none text-primary transition-colors duration-300 group-hover:text-foreground sm:text-[46px]"
         style={{ fontFamily: TITLE_FONT, fontWeight: 400 }}
       >
         {n}
       </span>
-      <div
-        className="mb-3 text-[20px] text-foreground"
-        style={{ fontFamily: TITLE_FONT, fontWeight: 700 }}
-      >
-        {title}
+      <div className="min-w-0">
+        <div
+          className="mb-2 text-[19px] text-foreground sm:text-[21px]"
+          style={{ fontFamily: TITLE_FONT, fontWeight: 700 }}
+        >
+          {title}
+        </div>
+        <p
+          className="text-[13.5px] leading-[1.85] text-muted-foreground sm:text-sm"
+          style={{ fontFamily: BODY_FONT, fontWeight: 300 }}
+        >
+          {desc}
+        </p>
       </div>
-      <p
-        className="text-[13.5px] leading-[1.85] text-muted-foreground"
-        style={{ fontFamily: BODY_FONT, fontWeight: 300 }}
-      >
-        {desc}
-      </p>
-      <span className="absolute bottom-0 left-7 right-7 h-0.5 origin-left scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100 sm:left-8 sm:right-8" />
     </motion.div>
   );
 };
@@ -76,7 +77,7 @@ const HowItWorks = () => {
           initial={{ opacity: 0, y: 22 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mb-16 max-w-[640px] text-center"
+          className="mx-auto mb-14 max-w-[640px] text-center md:mb-20"
         >
           <div
             className="mb-4 text-[10px] uppercase text-primary"
@@ -99,10 +100,29 @@ const HowItWorks = () => {
           </p>
         </motion.div>
 
-        <div className="grid gap-0.5 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((step, i) => (
-            <Step key={step.n} {...step} delay={i * 0.12} />
-          ))}
+        <div className="grid items-start gap-10 md:grid-cols-2 md:gap-16">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="mx-auto w-full max-w-[420px] md:sticky md:top-28 md:max-w-none"
+          >
+            <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-xl md:aspect-[3/4]">
+              <img
+                src="/como-funciona.jpeg"
+                alt="Letícia Pais durante um atendimento"
+                loading="lazy"
+                className="h-full w-full object-cover"
+                style={{ objectPosition: 'center 28%' }}
+              />
+            </div>
+          </motion.div>
+
+          <div>
+            {steps.map((step, i) => (
+              <Step key={step.n} {...step} delay={i * 0.1} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
