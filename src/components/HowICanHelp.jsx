@@ -6,7 +6,9 @@ import { useInView } from '@/hooks/useInView';
 const CREAM = '#F0EDE4';
 const TITLE_FONT = "'Tai Heritage Pro', serif";
 const BODY_FONT = "'Montserrat', sans-serif";
-const WHATSAPP = 'https://wa.me/5593991710671';
+const WHATSAPP =
+  'https://wa.me/5593991710671?text=' +
+  encodeURIComponent('Olá, Letícia! Vim pelo site e quero agendar minha primeira sessão.');
 
 // Foto da coluna da direita. Com null, a lista ocupa a largura toda.
 const PHOTO = '/como-posso-ajudar.webp';

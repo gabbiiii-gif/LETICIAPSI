@@ -59,6 +59,7 @@ const Footer = () => {
           
           <div className="flex flex-col items-center md:items-start gap-4">
             <span className="font-semibold text-lg">LETÍCIA PAIS</span>
+            <span className="text-sm text-muted-foreground">Psicóloga · CRP 10/11502</span>
             <p className="text-sm text-muted-foreground">Criado carinhosamente por Gabriel Reis💕</p>
             <div className="flex gap-4 mt-2">
                 <a href="https://instagram.com/psi.leticiapais" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-muted-foreground hover:text-primary transition-colors">
@@ -67,7 +68,7 @@ const Footer = () => {
                 <a href="mailto:psileticiapais@gmail.com" aria-label="Email" className="text-muted-foreground hover:text-primary transition-colors">
                     <Mail size={20} />
                 </a>
-                 <a href="https://wa.me/5593991710671" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="text-muted-foreground hover:text-primary transition-colors">
+                 <a href={'https://wa.me/5593991710671?text=' + encodeURIComponent('Olá, Letícia! Vim pelo site e quero agendar minha primeira sessão.')} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="text-muted-foreground hover:text-primary transition-colors">
                     <Phone size={20} />
                 </a>
             </div>
@@ -84,7 +85,7 @@ const Footer = () => {
 
         <div className="border-t border-border/50 mt-12 pt-8 text-center">
           <p className="text-muted-foreground text-sm">
-            © {currentYear} Letícia Pais 2025/2026. Todos os direitos reservados.
+            © {currentYear} Letícia Pais · Psicóloga · CRP 10/11502. Todos os direitos reservados.
           </p>
         </div>
       </div>

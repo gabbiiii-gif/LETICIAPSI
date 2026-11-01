@@ -15,11 +15,11 @@ const FAQ = () => {
     },
     {
       question: 'Como funciona o atendimento online?',
-      answer: 'O atendimento online é realizado por videochamada em plataforma segura e confidencial. Você pode participar de qualquer lugar do Brasil ou do exterior, precisando apenas de uma conexão estável de internet e um ambiente privado. A eficácia é a mesma do atendimento presencial.'
+      answer: 'O atendimento online é realizado por videochamada em plataforma segura e confidencial. Você pode participar de qualquer lugar do Brasil ou do exterior, precisando apenas de uma conexão estável de internet e um ambiente privado. Estudos indicam que a eficácia é semelhante à do atendimento presencial.'
     },
     {
       question: 'Quanto tempo dura cada sessão?',
-      answer: 'Cada sessão tem duração de aproximadamente 50 minutes. A frequência é geralmente semanal, mas pode ser ajustada conforme suas necessidades e evolução no processo terapêutico.'
+      answer: 'Cada sessão tem duração de aproximadamente 50 minutos. A frequência é geralmente semanal, mas pode ser ajustada conforme suas necessidades e evolução no processo terapêutico.'
     },
     {
       question: 'Como agendar uma consulta?',

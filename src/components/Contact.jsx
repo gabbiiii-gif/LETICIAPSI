@@ -26,7 +26,7 @@ const Contact = () => {
     icon: Phone,
     label: 'WhatsApp',
     value: '(93) 99171-0671',
-    link: 'https://wa.me/5593991710671'
+    link: 'https://wa.me/5593991710671?text=' + encodeURIComponent('Olá, Letícia! Vim pelo site e quero agendar minha primeira sessão.')
   }, {
     icon: Instagram,
     label: 'Instagram',
@@ -71,12 +71,13 @@ const Contact = () => {
   const handleSubmit = e => {
     e.preventDefault();
     if (validateForm()) {
-      const message = `Olá! Meu nome é ${formData.name}.\n\nE-mail: ${formData.email}\nTelefone: ${formData.phone}\n\nMensagem: ${formData.message}`;
+      const message = `Olá! Vim pelo site. Meu nome é ${formData.name}.\n\nE-mail: ${formData.email}\nTelefone: ${formData.phone}\n\nMensagem: ${formData.message}`;
       const whatsappUrl = `https://wa.me/5593991710671?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank');
+      // O formulario so abre o WhatsApp: a mensagem ainda precisa ser enviada por quem escreveu
       toast({
-        title: "Mensagem enviada com sucesso. obrigado!!",
-        description: "Você será redirecionado para o WhatsApp."
+        title: "Abrimos o seu WhatsApp com a mensagem pronta.",
+        description: "É só tocar em enviar para falar comigo."
       });
       setFormData({
         name: '',

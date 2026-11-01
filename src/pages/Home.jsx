@@ -16,10 +16,10 @@ function Home() {
     <>
       <Helmet>
         <title>Letícia Pais - Psicóloga CRP 10/11502 | Terapia Cognitivo-Comportamental</title>
-        <meta name="description" content="Psicóloga Letícia Pais CRP 10/11502. Especialista em Terapia Cognitivo-Comportamental (TCC). Atendimento presencial em Altamira-PA e online para todo Brasil e exterior." />
+        <meta name="description" content="Psicóloga Letícia Pais CRP 10/11502. Psicóloga clínica com abordagem em Terapia Cognitivo-Comportamental (TCC) e terapias contextuais. Atendimento presencial em Altamira-PA e online para todo Brasil e exterior." />
         <meta name="keywords" content="psicóloga, TCC, terapia cognitivo-comportamental, Letícia Pais, Altamira, atendimento online, psicologia" />
         <meta property="og:title" content="Letícia Pais - Psicóloga CRP 10/11502" />
-        <meta property="og:description" content="Especialista em Terapia Cognitivo-Comportamental. Atendimento presencial e online." />
+        <meta property="og:description" content="Psicóloga clínica com abordagem em Terapia Cognitivo-Comportamental. Atendimento presencial e online." />
         <meta property="og:type" content="website" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

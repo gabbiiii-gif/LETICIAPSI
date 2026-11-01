@@ -6,9 +6,29 @@ import { AnimatePresence, motion } from 'framer-motion';
 // Cor amostrada da borda lateral do video.
 const FUNDO = '#0a0c12';
 
-// Trava de seguranca: se o video travar ou nunca disparar "ended",
+// Trava de seguranca: se o video (3 s) travar ou nunca disparar "ended",
 // a abertura sai sozinha em vez de prender o visitante.
-const LIMITE_MS = 6000;
+const LIMITE_MS = 4500;
+
+// A abertura aparece uma vez por sessao e nunca no blog: quem chega por um
+// link de post, ou volta ao site, vai direto ao conteudo.
+const CHAVE_SESSAO = 'intro-vista';
+
+const jaViuNestaSessao = () => {
+  try {
+    return window.sessionStorage.getItem(CHAVE_SESSAO) === '1';
+  } catch {
+    return false;
+  }
+};
+
+const marcarComoVista = () => {
+  try {
+    window.sessionStorage.setItem(CHAVE_SESSAO, '1');
+  } catch {
+    // sem sessionStorage (aba privada etc.): segue sem lembrar
+  }
+};
 
 // Dissolve as bordas de cima e de baixo do video, para que ele se funda ao
 // fundo em vez de terminar numa linha reta.
@@ -25,9 +45,19 @@ const prefereMenosMovimento = () =>
   typeof window !== 'undefined' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+const deveMostrar = () =>
+  typeof window !== 'undefined' &&
+  !prefereMenosMovimento() &&
+  !window.location.pathname.startsWith('/blog') &&
+  !jaViuNestaSessao();
+
 const IntroOverlay = () => {
-  const [visivel, setVisivel] = useState(() => !prefereMenosMovimento());
+  const [visivel, setVisivel] = useState(deveMostrar);
   const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (visivel) marcarComoVista();
+  }, [visivel]);
 
   const fechar = useCallback(() => {
     setVisivel(false);

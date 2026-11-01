@@ -4,7 +4,9 @@ import { motion } from 'framer-motion';
 const CREAM = '#F0EDE4';
 const TITLE_FONT = "'Tai Heritage Pro', serif";
 const BODY_FONT = "'Montserrat', sans-serif";
-const WHATSAPP = 'https://wa.me/5593991710671';
+const WHATSAPP =
+  'https://wa.me/5593991710671?text=' +
+  encodeURIComponent('Olá, Letícia! Vim pelo site e quero agendar minha primeira sessão.');
 
 const rise = (delay) => ({
   initial: { opacity: 0, y: 24 },
